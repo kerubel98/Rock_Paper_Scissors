@@ -12,8 +12,46 @@
             var comChoice = game[Math.floor(Math.random()*game.length)];
             return comChoice;
         }; 
-        var print = getComputerChoice();
-        console.log(print);
+        var playRound = function (playerchoise, computerchoice) {
+            var p1 = playerchoise.toUpperCase();
+            var p2 = computerchoice.toUpperCase();
+            
+            
+            switch (p1) {
+                case 'ROCK':
+                    if (p2 ==='ROCK') {
+                        return 'DROW';
+                    } else if (p2 === 'SCISSORS') {
+                        return 'you win';
+                    } else {
+                        return 'you loss';
+                    };
+                    break;
+                case 'SCISSORS':
+                    if (p2 ==='ROCK') {
+                            return 'you loos';
+                        } else if (p2 === 'SCISSORS') {
+                            return 'Drow';
+                        } else {
+                            return 'you winn';
+                        };
+                        break;
+                case 'PAPER':
+                    if (p2 ==='ROCK') {
+                                return 'you winn';
+                            } else if (p2 === 'SCISSORS') {
+                                return 'you loos';
+                            } else {
+                                return 'Derow';
+                            };
+                            break;       
+            };
+        };
+        var choC = getComputerChoice();
+        var choP = "scissors";
+
+        var out = `${playRound(choP, choC)} computer chose ${choC}`
+        console.log(out)
     </script>
 </body>
 </html>
