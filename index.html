@@ -20,7 +20,7 @@
             switch (p1) {
                 case 'ROCK':
                     if (p2 ==='ROCK') {
-                        return 'DROW';
+                        return 'Drow';
                     } else if (p2 === 'SCISSORS') {
                         return 'you win';
                     } else {
@@ -33,25 +33,42 @@
                         } else if (p2 === 'SCISSORS') {
                             return 'Drow';
                         } else {
-                            return 'you winn';
+                            return 'you win';
                         };
                         break;
                 case 'PAPER':
                     if (p2 ==='ROCK') {
-                                return 'you winn';
+                                return 'you win';
                             } else if (p2 === 'SCISSORS') {
                                 return 'you loos';
                             } else {
-                                return 'Derow';
+                                return 'Drow';
                             };
                             break;       
             };
+        }; 
+        
+        var game = function(num) {
+            var cu1 = 0;
+            var cu = 0;
+            for (var i = 0; i < num; ++i) {
+                var player = prompt('Inter your choise');
+                var comp = getComputerChoice();
+                var result = playRound(player, comp);
+                console.log(result);
+                if (result === 'you win'){
+                    cu1 = cu1 + 1;
+                    console.log(cu1)
+                }else if (result === 'you loss') {
+                    cu = cu + 1;
+                    console.log(cu)
+                } else {
+                    continue;
+                };
+            };
+            console.log(`you win ${cu1} times`, ` and you loos ${cu} times`);
         };
-        var choC = getComputerChoice();
-        var choP = "scissors";
-
-        var out = `${playRound(choP, choC)} computer chose ${choC}`
-        console.log(out)
+        game(5);
     </script>
 </body>
 </html>
