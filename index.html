@@ -6,15 +6,25 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="contener">
+        <div class="palyer">
+            <button class="ROCK">ROCK</button>
+            <button class="SCISSORS">SCISSORS</button>
+            <button class="PAPER">PAPER</button>
+        </div>
+    </div>
     <script>
+       
         var getComputerChoice = function() {
             var game = ["Rock", "Paper", "Scissors"];
             var comChoice = game[Math.floor(Math.random()*game.length)];
             return comChoice;
         }; 
-        var playRound = function (playerchoise, computerchoice) {
-            var p1 = playerchoise.toUpperCase();
-            var p2 = computerchoice.toUpperCase();
+
+        var playRound = function (player, computerChoice) {
+            var p1 = player;
+            var p2 = computerChoice.toUpperCase();
+        
             
             
             switch (p1) {
@@ -48,27 +58,42 @@
             };
         }; 
         
-        var game = function(num) {
+  
+       
+        var game = function(num, player) {
             var cu1 = 0;
             var cu = 0;
             for (var i = 0; i < num; ++i) {
-                var player = prompt('Inter your choise');
                 var comp = getComputerChoice();
                 var result = playRound(player, comp);
                 console.log(result);
                 if (result === 'you win'){
                     cu1 = cu1 + 1;
-                    console.log(cu1)
                 }else if (result === 'you loss') {
                     cu = cu + 1;
-                    console.log(cu)
                 } else {
                     continue;
                 };
             };
             console.log(`you win ${cu1} times`, ` and you loos ${cu} times`);
         };
-        game(5);
+    
+        var display = document.querySelector('.contener')
+        var newdisplay = document.createElement('div')
+        newdisplay.classList.add('display');
+        var play = document.querySelectorAll('button');
+        console.log(play)
+        play.forEach(element => { element.addEventListener('click', function(e){
+            p1 = e.target.textContent
+            p2 = getComputerChoice();
+            console.log(playRound(p1, p2));
+            if(game(5, p1)) {newdisplay.textContent = game(5, p1)}
+            else {newdisplay.textContent = playRound(p1, p2);};
+            
+            display.appendChild(newdisplay);
+            
+        });
+    });
     </script>
 </body>
 </html>
